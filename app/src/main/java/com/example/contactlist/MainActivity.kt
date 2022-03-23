@@ -1,5 +1,6 @@
 package com.example.contactlist
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -23,7 +24,16 @@ class MainActivity : AppCompatActivity() {
         //making the data
         val data = mutableListOf<ContactResult>()
         //making the adapter
-        val adapter = ContactAdapter(this,data);
+        val adapter = ContactAdapter(this,data, object : ContactAdapter.OnClickListener{
+            override fun onClick(position: Int) {
+                Log.i(TAG,"clciked at position ${position+1}")
+                val intent = Intent(this@MainActivity,userInfo::class.java)
+
+                intent.putExtra("data", data[position].name)
+                startActivity(intent)
+            }
+
+        });
         rvcontact.adapter = adapter
 
 

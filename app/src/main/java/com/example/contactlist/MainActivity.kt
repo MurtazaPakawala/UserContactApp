@@ -29,7 +29,15 @@ class MainActivity : AppCompatActivity() {
                 Log.i(TAG,"clciked at position ${position+1}")
                 val intent = Intent(this@MainActivity,userInfo::class.java)
 
-                intent.putExtra("data", data[position].name)
+                intent.putExtra("name", data[position].name)
+                intent.putExtra("email",data[position].email)
+                intent.putExtra("phone",data[position].phone)
+                intent.putExtra("company_name",data[position].company.name)
+                intent.putExtra("address_city",data[position].address.city)
+                intent.putExtra("address_suite",data[position].address.suite)
+                intent.putExtra("address_street",data[position].address.street)
+                intent.putExtra("address_zipcode",data[position].address.zipcode)
+
                 startActivity(intent)
             }
 
